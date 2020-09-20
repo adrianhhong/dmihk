@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import io from "socket.io-client";
+
 export default {
   data() {
     return {
@@ -27,6 +29,14 @@ export default {
       // this.$socket.client is `socket.io-client` instance
       this.$socket.client.emit("emit_method", "no SHOT");
     }
+  },
+  created() {
+    const socket = io("http://localhost:3000");
+    console.log(socket.id); // undefined
+
+    socket.on("connect", () => {
+      console.log(socket.id); // 'G5p5...'
+    });
   }
 };
 </script>
