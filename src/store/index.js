@@ -2,7 +2,11 @@ import { createStore } from "vuex";
 
 export default createStore({
   state: {},
-  mutations: {},
+  mutations: {
+    // SOCKET_REPLY() {
+      
+    // }
+  },
   actions: {},
   modules: {}
 });
