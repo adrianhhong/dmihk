@@ -1,35 +1,14 @@
 <template>
   <div>
-    <h1>no SHOT buckO! {{ data }}</h1>
+    <h3 class="text-xs-center mb-3">ENTER A HANDLE</h3>
   </div>
 </template>
 
 <script>
 import io from "socket.io-client";
+//https://medium.com/@msanathkumar/building-a-simple-real-time-chat-application-using-socket-io-express-and-vue-js-d263c08a4c59
 
 export default {
-  data() {
-    return {
-      data: "sample"
-    };
-  },
-  sockets: {
-    connect() {
-      console.log("socket connected");
-    },
-    customEmit(val) {
-      this.data = val;
-      console.log(
-        'this method was fired by the socket server. eg: io.emit("customEmit", data)'
-      );
-    }
-  },
-  methods: {
-    clickButton() {
-      // this.$socket.client is `socket.io-client` instance
-      this.$socket.client.emit("emit_method", "no SHOT");
-    }
-  },
   created() {
     const socket = io("http://localhost:3000");
     console.log(socket.id); // undefined
